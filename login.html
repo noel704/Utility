@@ -142,6 +142,7 @@
 		}</style>
 </head>
 <body>
+	<form>
 	<div class="square">
 		<i style="--clr:#8a7575;"></i>
 		<i style="--clr:#4471d0;"></i>
@@ -164,5 +165,47 @@
 			</div>
 		</div>
 	</div>
+	</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const joinButton = document.querySelector('.inputBx input[type="submit"]');
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Check if any field is empty
+            const inputs = this.querySelectorAll('input');
+            let allFieldsFilled = true;
+
+            inputs.forEach(function(input) {
+                if (input.value.trim() === '') {
+                    allFieldsFilled = false;
+                }
+            });
+
+            if (allFieldsFilled) {
+                // Change the button text to "Registered Successfully"
+                joinButton.value = 'Registered';
+
+                // Redirect to index.html after a delay (in this example, after 2 seconds)
+                setTimeout(function() {
+                    window.location.href = 'index.html';
+                }, 1500); // 1500 milliseconds = 1.5 second
+            } else {
+                // Change the button text to "Field(s) can't be empty"
+                joinButton.value = "Field(s) can't be empty";
+
+                // Revert back to "Join" after 2 second
+                setTimeout(function() {
+                    joinButton.value = 'Join';
+                }, 2000); // 2000 milliseconds = 2 second
+            }
+        });
+    });
+</script>
+
+
 </body>
 </html>
