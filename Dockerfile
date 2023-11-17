@@ -1,4 +1,4 @@
-From nginx:stable-alpine3.17
+From ubuntu:latest
 Copy Utility.conf   /etc/nginx/conf.d/
 Run rm -rvf /var/www/html/*
 Workdir /var/www/html/Utility
